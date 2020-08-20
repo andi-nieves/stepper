@@ -1,0 +1,83 @@
+@mixin background {
+    background:  #333333;
+    color: #fff;
+}
+.stepper-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: relative;
+    margin-top: 10px;
+    .stepper-item:not(:last-child)::before {
+        content: '';
+        width: calc(50% - 18px);
+        border-top: 1px solid #dadada;
+        top: 30%;
+        left: calc(50% + 18px);
+        position: absolute;
+        z-index: 10;
+    }
+    .stepper-item:not(:first-child)::after {
+        content: '';
+        width: calc(50% - 18px);
+        border-top: 1px solid #dadada;
+        top: 30%;
+        right: calc(50% + 18px);
+        position: absolute;
+        z-index: 10;
+    }
+    .stepper-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        .circle {
+            padding: 0;
+            height: 38px;
+            width: 38px;
+            border: #dadada solid 1px;
+            border-radius: 19px;
+            background-color: #FFFFFF;
+            z-index: 3;
+            cursor: pointer;
+        }
+        .circle.active {
+            background-color: #dadada;
+        }
+        .circle:hover {
+            @include background();
+            opacity: .5;
+        }
+        .circle:hover *{
+            color: #fff;
+        }
+        .circle-backdrop {
+            height: 50px;
+            width: 50px;
+            border-radius: 25px;
+            background-color: #FFFFFF;
+            position: absolute;
+            z-index: 2;
+        }
+        .index {
+            font-size: 14px;
+            color: #43425D;
+            margin-top: 1px;
+        }
+        .icon {
+            color: #FFFFFF;
+            margin-left: -6px;
+            font-weight: bold;
+            margin-left: 2px;
+            margin-top: 5px;
+        }
+        .title {
+            font-size: 11px;
+            text-align: center;
+            margin-top: 10px
+        }
+    }
+}
